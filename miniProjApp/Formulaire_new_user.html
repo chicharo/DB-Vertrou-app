@@ -74,73 +74,83 @@ La classe .container permet de définir la largeur et la disposition du canevas 
 
             <p>
             <!-- formulaire vertical -->
-            <form role="form" class="form-vertical"> 
+            <form role="form" class="form-vertical" action="createUser.php" method="post"> 
                 <fieldset> 
-                    <legend>Veuillez remplir les champs suivants :</legend> 
+                    <legend>Please fill in the following fields:</legend> 
 
                     <div class="form-group"> 
 
-                    <label class="sr-only" for="InputTxt1">Votre pseudo</label> 
+                    <label class="sr-only" for="InputTxt1">Your pseudo</label> 
                     <div class="row">
                     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="InputPseudo" placeholder="Votre pseudo..."> 
+                    <input type="text" class="form-control" name="pseudo" id="InputPseudo" placeholder="Pseudo..." maxlength="20"> 
                     </div> 
                     </div>
                     </div>
 
                     <div class="form-group"> 
 
-                    <label class="sr-only" for="InputTxt1">Votre prénom</label> 
+                    <label class="sr-only" for="InputTxt1">Your first name</label> 
                     <div class="row">
                     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="InputFirstname" placeholder="Votre prenom..."> 
+                    <input type="text" class="form-control" name="firstName" id="InputFirstname" placeholder="First name..." maxlength="30"> 
                     </div> 
                     </div>
                     </div>
 
                     <div class="form-group"> 
 
-                    <label class="sr-only" for="InputTxt1">Votre nom de famille</label> 
+                    <label class="sr-only" for="InputTxt1">Your family name</label> 
                     <div class="row">
                     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" id="InputLastname" placeholder="Votre nom de famille..."> 
+                    <input type="text" class="form-control" name="lastName" id="InputLastname" placeholder="Family name..." maxlength="30"> 
                     </div> 
                     </div>
                     </div>
 
+                    <div class="form-group">
 
-                    <div class="form-group"> 
-                    <label class="sr-only" for="InputEmail1l">Votre meilleure Adresse email</label> 
+                    <label class="sr-only" for="InputTxt1">Your date of birth</label> 
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="date" class="form-control" name="birth" id="InputBirth"placeholder="Date of your birth... ex : 02/10/1995"> 
+                    </div> 
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+
+                    <label class="sr-only" for="InputEmail1l">Your best email adress</label> 
 
                     <div class="row">
                     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-                    <input type="email" class="form-control" id="InputEmail" placeholder="Votre email..."> 
+                    <input type="email" class="form-control" name="email" id="InputEmail" placeholder="email..." maxlength="50"> 
                     </div> 
                     </div>
                     </div>
                     <div class="form-group"> 
 
-                    <label class="sr-only" for="InputTxt1">Votre mot de passe</label> 
+                    <label class="sr-only" for="InputTxt1">Your password</label> 
                     <div class="row">
                     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-                    <input type="password" class="form-control" id="InputPassword1" placeholder="Votre mot de passe..."> 
+                    <input type="password" class="form-control" id="InputPassword1" placeholder="Password..." maxlength="50" name="passwd"> 
                     </div> 
                     </div>
                     </div>
 
                     <div class="form-group"> 
 
-                    <label class="sr-only" for="InputTxt1">Votre mot de passe</label> 
+                    <label class="sr-only" for="InputTxt1">Retype your password</label> 
                     <div class="row">
                     <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
-                    <input type="password" class="form-control" id="InputPassword2" placeholder="Reecrivez votre mot de passe..."> 
+                    <input type="password" class="form-control" id="InputPassword2" placeholder="Retype your password..." maxlength="50"> 
                     </div> 
                     </div>
                     </div>
 
                     
 
-                    <button type="submit" class="btn btn-primary">Recevoir !</button> 
+                    <button type="submit" class="btn btn-primary">Recieve !</button>
                 </fieldset> 
             </form>
             </p>
