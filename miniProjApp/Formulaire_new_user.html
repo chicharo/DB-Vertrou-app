@@ -1,0 +1,161 @@
+<!-- 
+/**
+
+  The Initial Developer of the Original Code is
+  Matthieu  - http://www.programmation-facile.com/
+  Portions created by the Initial Developer are Copyright (C) 2013
+  the Initial Developer. All Rights Reserved.
+
+  Contributor(s) :
+
+ */
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ --> 
+
+<!DOCTYPE html> 
+<html lang="fr"> 
+<head> 
+<title>Fomulaire new user</title> 
+<meta charset="UTF-8">
+
+<!-- permet au CSS de déterminer la résolution de l'écran en fonction du périphérique -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css"> 
+<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="bootstrap/js/jquery-1.10.2.js"></script> 
+<script src="bootstrap/js/bootstrap.js"></script> 
+
+
+<style>
+body{
+	font-size: 12px;
+	font-family: Arial;
+}
+
+footer{
+  margin-top: 30px;
+}
+
+/* affiche les zones en couleurs */
+#content > div {
+      background-color: #A9BCF5;
+      box-shadow: inset 2px -2px 2px #DF3A01, inset -2px 2px 2px #DF3A01;
+      height: 1024px;
+}
+
+
+/*.row > div {
+      background-color: #BEF781;
+      box-shadow: inset 2px -2px 2px #DBA901, inset -2px 2px 2px #DBA901;
+}*/
+
+</style>
+
+</head>
+
+<body>
+
+<header> 
+	<span><h1>Formulaire new user</h1></span>  
+</header>
+
+<!-- La mise en forme du contenu de la div via la classe .container
+La classe .container permet de définir la largeur et la disposition du canevas de la page. -->
+<div class="container"> 
+      
+    <div class="row" id="content"> 
+        <!-- occupe  9 colonnes sur 12 de la grille -->
+
+        <div class="col-xs-12"> 
+
+            <p>
+            <!-- formulaire vertical -->
+            <form role="form" class="form-vertical"> 
+                <fieldset> 
+                    <legend>Veuillez remplir les champs suivants :</legend> 
+
+                    <div class="form-group"> 
+
+                    <label class="sr-only" for="InputTxt1">Votre pseudo</label> 
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="text" class="form-control" id="InputPseudo" placeholder="Votre pseudo..."> 
+                    </div> 
+                    </div>
+                    </div>
+
+                    <div class="form-group"> 
+
+                    <label class="sr-only" for="InputTxt1">Votre prénom</label> 
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="text" class="form-control" id="InputFirstname" placeholder="Votre prenom..."> 
+                    </div> 
+                    </div>
+                    </div>
+
+                    <div class="form-group"> 
+
+                    <label class="sr-only" for="InputTxt1">Votre nom de famille</label> 
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="text" class="form-control" id="InputLastname" placeholder="Votre nom de famille..."> 
+                    </div> 
+                    </div>
+                    </div>
+
+
+                    <div class="form-group"> 
+                    <label class="sr-only" for="InputEmail1l">Votre meilleure Adresse email</label> 
+
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="email" class="form-control" id="InputEmail" placeholder="Votre email..."> 
+                    </div> 
+                    </div>
+                    </div>
+                    <div class="form-group"> 
+
+                    <label class="sr-only" for="InputTxt1">Votre mot de passe</label> 
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="password" class="form-control" id="InputPassword1" placeholder="Votre mot de passe..."> 
+                    </div> 
+                    </div>
+                    </div>
+
+                    <div class="form-group"> 
+
+                    <label class="sr-only" for="InputTxt1">Votre mot de passe</label> 
+                    <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+                    <input type="password" class="form-control" id="InputPassword2" placeholder="Reecrivez votre mot de passe..."> 
+                    </div> 
+                    </div>
+                    </div>
+
+                    
+
+                    <button type="submit" class="btn btn-primary">Recevoir !</button> 
+                </fieldset> 
+            </form>
+            </p>
+
+        </div>      
+         
+    </div> 
+  
+</div> 
+
+
+<footer> 
+	<hr> 
+	<p>Copyright Peurichard Olivier, Marois Etienne</p>  
+</footer> 
+
+</body> 
+</html>
