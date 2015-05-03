@@ -13,7 +13,12 @@ $(document).ready(function(){
                 data: {"username":Username},
                 cache: false,
                 success: function(result){
-                    alert(result);
+                    if(result=="Available"){
+                        $('#username_avail_result').html('Available');
+                    }
+                    else if(result=="Username not available"){
+                        $('#username_avail_result').html('Username not available');
+                    }
                 }
             });
         }else{
