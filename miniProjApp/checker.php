@@ -2,10 +2,8 @@
 
  // define database related variables
    $database = 'sensoringDB';
-   $host = 192.168.1.73;
    $user = 'user';
    $pass = 'darzak';
-   echo "Available";
    try
 {
 	// On se connecte à MySQL
