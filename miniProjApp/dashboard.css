@@ -4,7 +4,6 @@
  * Base structure
  */
 
-
 /* Move down content because we have a fixed navbar that is 50px tall */
 
 body
@@ -45,7 +44,7 @@ body
         display: block;
         padding: 70px 20px 20px;
         background-color: #f5f5f5;
-        border-right: 1px solid #eee;
+        border-right: 7px solid;
     }
 }
 
@@ -101,6 +100,7 @@ body
 {
     margin-bottom: 30px;
     text-align: center;
+    max-height: 225px;
 }
 
 .placeholders h4
@@ -111,10 +111,25 @@ body
 .placeholder
 {
     margin-bottom: 20px;
+    max-height: 240px;
 }
 
 .placeholder img
 {
     border-radius: 50%;
+    width: 170px;
+}
+
+.alert
+{
+    max-width: 122px;
+    max-height: 60px;
+    position: relative;
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0px;
+    float: right;
+    text-align: center;
+    font-weight: 500;
 }
 
