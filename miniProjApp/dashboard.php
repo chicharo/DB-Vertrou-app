@@ -1,3 +1,84 @@
+<!DOCTYPE html> 
+<html lang="fr"> 
+<head> 
+<title>Dashboard Template for Bootstrap</title> 
+<meta charset="UTF-8">
+
+<!-- permet au CSS de déterminer la résolution de l'écran en fonction du périphérique -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css"> 
+<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="bootstrap/js/jquery-1.10.2.js"></script> 
+<script src="bootstrap/js/bootstrap.js"></script> 
+
+
+<style>
+body{
+    font-size: 12px;
+    font-family: Arial;
+}
+
+footer{
+  margin-top: 30px;
+}
+
+/* affiche les zones en couleurs */
+#content > div {
+      background-color: #A9BCF5;
+      box-shadow: inset 2px -2px 2px #DF3A01, inset -2px 2px 2px #DF3A01;
+      height: 1024px;
+}
+
+
+/*.row > div {
+      background-color: #BEF781;
+      box-shadow: inset 2px -2px 2px #DBA901, inset -2px 2px 2px #DBA901;
+}*/
+
+</style>
+
+</head>
+
+<body>
+
+    <?php
+try
+{
+    // Connection to database
+    //$bdd = new PDO('mysql:host=localhost;dbname=mesTests;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=192.168.1.73;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
+}
+catch(Exception $e)
+{
+    // If there is an error, we stop all
+        die('Erreur : '.$e->getMessage());
+}
+
+//if there is an username and a password entered in the fields
+if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password'] != null AND isset($_POST['password'])){
+//indentfication with password
+    $sql = "SELECT * FROM Users WHERE username = '".htmlspecialchars($_POST['username'])."'";
+    $req = $bdd->query($sql);
+    while ($data = $req->fetch()){
+        $passwd = $data['passwd'];
+    }
+
+//creation of variables we will need : username and id_owner
+    $username = htmlspecialchars($_POST['username']);
+    $sql = "SELECT * FROM Users WHERE username = '".$username."'";
+    $req = $bdd->query($sql);
+    while ($data = $req->fetch()){
+        $id_owner = $data['id'];
+    }
+
+    //Now, the user is identify with combination of corrects username and password
+    if($_POST['password'] == $passwd){
+        include("sqlContainers.php");
+//---The HTML Page----------------------------------------------------------------------------------------------------
+        ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,9 +145,20 @@
                                 <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse1">                            1st Option</a></h4>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <a href="#">Water</a>
-                                </div>
+                            <?php
+                            if(isset($container_type) AND $container_type !=null){
+                                
+                                for($i = 0; $i<$result = count($container_type); $i++){
+                                ?><div class="panel-body"><!-- a ajouter au href apres onclick="displayContainers(id du container)"-->
+                                        <a href="#" ><?php echo $container_type[$i] ?></a>
+                                    </div>
+                                <?php
+                                }
+                            }
+                            else{
+                                echo 'You don\'t have containers';
+                            }
+                            ?>
                                 <div class="panel-body">
                                     <div class="radio">
                                         <label class="control-label">
@@ -498,4 +590,33 @@ subtitle: {
 </script>
 
     </footer>
+</html>
+
+        <?php
+//end of HTML page-----------------------------------------------------------------------------------------
+    }
+    else{
+        echo 'Login or password incorrect';?>
+        <head>
+
+        <title>Return to index</title>
+
+        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
+        </head>
+        <?php
+    }
+}
+else{
+    echo 'Please, enter your login and password';?>
+        <head>
+
+        <title>Return to index</title>
+
+        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
+        </head>
+        <?php
+}
+
+?>
+</body> 
 </html>

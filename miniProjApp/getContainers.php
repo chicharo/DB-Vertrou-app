@@ -3,12 +3,17 @@
     $password = "darzak";   
     $host = "192.168.1.73";
     $database="sensoringDB";
+
+    /*$username = "root"; 
+    $password = "";   
+    $host = "localhost";
+    $database="mesTest";*/
     
     $server = mysql_connect($host, $username, $password);
     $connection = mysql_select_db($database, $server);
 
     $myquery = "
-SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` = 1)
+SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` = '".$id_owner."')
 ";
     $query = mysql_query($myquery);
     
