@@ -8,7 +8,7 @@
     $connection = mysql_select_db($database, $server);
 
     $myquery = "
-SELECT `content_type`,`name` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` = 1)
+SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` = 1)
 ";
     $query = mysql_query($myquery);
     
