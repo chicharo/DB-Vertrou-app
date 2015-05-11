@@ -1,48 +1,3 @@
-<!DOCTYPE html> 
-<html lang="fr"> 
-<head> 
-<title>Dashboard Template for Bootstrap</title> 
-<meta charset="UTF-8">
-
-<!-- permet au CSS de déterminer la résolution de l'écran en fonction du périphérique -->
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-
-
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css"> 
-<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-<script src="bootstrap/js/jquery-1.10.2.js"></script> 
-<script src="bootstrap/js/bootstrap.js"></script> 
-
-
-<style>
-body{
-    font-size: 12px;
-    font-family: Arial;
-}
-
-footer{
-  margin-top: 30px;
-}
-
-/* affiche les zones en couleurs */
-#content > div {
-      background-color: #A9BCF5;
-      box-shadow: inset 2px -2px 2px #DF3A01, inset -2px 2px 2px #DF3A01;
-      height: 1024px;
-}
-
-
-/*.row > div {
-      background-color: #BEF781;
-      box-shadow: inset 2px -2px 2px #DBA901, inset -2px 2px 2px #DBA901;
-}*/
-
-</style>
-
-</head>
-
-<body>
 
     <?php
 try
@@ -89,7 +44,8 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
         <meta name="author" content="">
         <title>Dashboard Template for Bootstrap</title>
 
-        
+        <script src="bootstrap/js/jquery-1.10.2.js"></script> 
+        <script src="bootstrap/js/bootstrap.js"></script> 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -117,6 +73,9 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#">Dashboard</a>
+                        </li>
+                        <li>
+                            <a id="refresh" href="#" >Refresh</a>
                         </li>
                         <li>
                             <a href="#">Settings</a>
@@ -237,22 +196,11 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                             <div class="row">
 
                         <div class="grid-stack" data-gs-width="4">
-    
-
-
-
-
-
-
-
-
 
 
                                     
                                     
-                         <div class="alert alert-warning">
-                             Pay attention nerd, this is an alert
-                            </div>
+                         
             </div>
             </div> 
     </div>
@@ -266,12 +214,7 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
 
                         
                    
-                    </div>
-                </div>
-            </div>
-                    <!--Container-fluid of all the rows of charts-->
                     
-        </div>
     </div>
 </div>
         <!-- Bootstrap core JavaScript
@@ -302,292 +245,8 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
 
 
 
-<script>
-    
-</script>
 
 
-<script>
-
-$(function () {
-
-    $('#container').highcharts({
-        exporting: { enabled: false },
-        credits: {
-      enabled: false
-  },
-        title: {
-    text: '',
-    style: {
-        display: 'none'
-    }
-},
-subtitle: {
-    text: '',
-    style: {
-        display: 'none'
-    }
-},
-        chart: {
-            type: 'gauge',
-            enabled:false,
-            plotBackgroundColor: null,
-            plotBackgroundImage: null,
-            plotBorderWidth: 0,
-            plotShadow: false
-        },
-
-        pane: {
-            startAngle: -150,
-            endAngle: 150,
-            background: [{
-                backgroundColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                    stops: [
-                        [0, '#FFF'],
-                        [1, '#333']
-                    ]
-                },
-                borderWidth: 0,
-                outerRadius: '100%'
-            }, {
-                backgroundColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                    stops: [
-                        [0, '#333'],
-                        [1, '#FFF']
-                    ]
-                },
-                borderWidth: 1,
-                outerRadius: '107%'
-            }, {
-                // default background
-            }, {
-                backgroundColor: '#DDD',
-                borderWidth: 0,
-                outerRadius: '105%',
-                innerRadius: '103%'
-            }]
-        },
-
-        // the value axis
-        yAxis: {
-            min: 0,
-            max: 200,
-
-            minorTickInterval: 'auto',
-            minorTickWidth: 1,
-            minorTickLength: 10,
-            minorTickPosition: 'inside',
-            minorTickColor: '#666',
-
-            tickPixelInterval: 30,
-            tickWidth: 2,
-            tickPosition: 'inside',
-            tickLength: 10,
-            tickColor: '#666',
-            labels: {
-                step: 2,
-                rotation: 'auto'
-            },
-            title: {
-                text: 'Liters'
-            },
-            plotBands: [{
-                from: 0,
-                to: 20,
-                color: '#DF5353' // red
-                
-            }, {
-                from: 20,
-                to: 200,
-                color: '#55BF3B' // green
-            }]
-        },
-
-        series: [{
-            name: 'Speed',
-            data: [80],
-            tooltip: {
-                valueSuffix: ' Liters'
-            }
-        }]
-
-    });
-});
-</script>
-
-<script>
-    
-    $(function () {
-
-    var gaugeOptions = {
-
-        chart: {
-            type: 'solidgauge'
-        },
-
-        title: null,
-
-        pane: {
-            center: ['50%', '85%'],
-            size: '140%',
-            startAngle: -90,
-            endAngle: 90,
-            background: {
-                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
-                innerRadius: '60%',
-                outerRadius: '100%',
-                shape: 'arc'
-            }
-        },
-
-        tooltip: {
-            enabled: false
-        },
-
-        // the value axis
-        yAxis: {
-            stops: [
-                [0.3, '#DF5353'], // red
-                [0.3, '#DDDF0D'], // yellow
-                [0.3, '#55BF3B'] // green
-            ],
-            lineWidth: 0,
-            minorTickInterval: null,
-            tickPixelInterval: 400,
-            tickWidth: 0,
-            title: {
-                y: -70
-            },
-            labels: {
-                y: 16
-            }
-        },
-
-        plotOptions: {
-            solidgauge: {
-                dataLabels: {
-                    y: 5,
-                    borderWidth: 0,
-                    useHTML: true
-                }
-            }
-        }
-    };
-
-    // The speed gauge
-    $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
-        exporting: { enabled: false },
-        credits: {
-      enabled: false
-  },
-subtitle: {
-    text: '',
-    style: {
-        display: 'none'
-    }
-},
-        yAxis: {
-            min: 0,
-            max: 200,
-            title: {
-                text: 'Water'
-            }
-        },
-
-        credits: {
-            enabled: false
-        },
-
-        series: [{
-            name: 'Water',
-            data: [80],
-            dataLabels: {
-                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
-                       '<span style="font-size:12px;color:silver">Liters</span></div>'
-            },
-            tooltip: {
-                valueSuffix: ' Liters'
-            }
-        }]
-
-    }));
-
-    // The RPM gauge
-    $('#container-rpm').highcharts(Highcharts.merge(gaugeOptions, {
-        exporting: { enabled: false },
-        credits: {
-      enabled: false
-  },
-subtitle: {
-    text: '',
-    style: {
-        display: 'none'
-    }
-},
-        yAxis: {
-            min: 0,
-            max: 200,
-            title: {
-                text: 'Oil'
-            }
-        },
-
-        series: [{
-            name: 'Oil',
-            data: [1],
-            dataLabels: {
-                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' +
-                       '<span style="font-size:12px;color:silver">Liters</span></div>'
-            },
-            tooltip: {
-                valueSuffix: 'Liters'
-            }
-        }]
-
-    }));
-
-    // Bring life to the dials
-    setInterval(function () {
-        // Speed
-        var chart = $('#container-speed').highcharts(),
-            point,
-            newVal,
-            inc;
-
-        if (chart) {
-            point = chart.series[0].points[0];
-            inc = Math.round((Math.random() - 0.5) * 100);
-            newVal = point.y + inc;
-
-            if (newVal < 0 || newVal > 200) {
-                newVal = point.y - inc;
-            }
-
-            point.update(newVal);
-        }
-
-        // RPM
-        chart = $('#container-rpm').highcharts();
-        if (chart) {
-            point = chart.series[0].points[0];
-            inc = Math.round((Math.random() - 0.5) * 100);
-            newVal = point.y + inc;
-
-            if (newVal < 0 || newVal > 100) {
-                newVal = point.y - inc;
-            }
-
-            point.update(newVal);
-        }
-    }, 2000);
-
-
-});
-</script>
 
     </footer>
 </html>
@@ -601,7 +260,7 @@ subtitle: {
 
         <title>Return to index</title>
 
-        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
+        <meta http-equiv="refresh" content="3; URL=index.html">
         </head>
         <?php
     }
@@ -612,11 +271,9 @@ else{
 
         <title>Return to index</title>
 
-        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
+        <meta http-equiv="refresh" content="3; URL=index.html">
         </head>
         <?php
 }
 
 ?>
-</body> 
-</html>
