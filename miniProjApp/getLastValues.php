@@ -1,7 +1,7 @@
 <?php
    $username = "user"; 
     $password = "darzak";   
-    $host = "192.168.1.73";
+    $host = "192.168.1.78";
     $database="sensoringDB";
 
 try

@@ -1,16 +1,16 @@
 
 $(document).ready(function(){
 	var items = [];
-
+  alert("hey");
 
 
   	$.ajax({
   		dataType: "json",
   		url: 'getContainers.php',
   		success: function(result){
-        
+        alert("su?");
         var grid = $('.grid-stack').data('gridstack');
-
+        
   			result.forEach(function(d){
   				items.push([d.id,d.content_type,d.name,d.max_value,d.alert_value]);
           
@@ -118,33 +118,12 @@ $(document).ready(function(){
           
             getLastValues();
 
-       
-        }
-         });
-
-    // activate refresh on click button
-  document.getElementById('refresh').onclick = function () {
-      getLastValues();
-  };
-           
+              }
+         }); 
 }); 
-
-        function loadScript(url, callback){
-           
-            // Adding the script tag to the head as suggested before
-            var head = document.getElementsByTagName('head')[0];
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = url;
-
-            // Then bind the event to the callback function.
-            // There are several events for cross browser compatibility.
-            script.onreadystatechange = callback;
-            script.onload = callback;
-
-            // Fire the loading
-            head.appendChild(script);
-        };
+        
+  
+        
 
         
 
