@@ -44,6 +44,8 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
         <meta name="author" content="">
         <title>Dashboard Template for Bootstrap</title>
 
+        <script src="displayContainers.js"></script>
+
         <script src="bootstrap/js/jquery-1.10.2.js"></script> 
         <script src="bootstrap/js/bootstrap.js"></script> 
         <!-- Bootstrap core CSS -->
@@ -105,27 +107,26 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
                             <?php
+                            include("sqlContainers.php");
+                            //include("returnContainersByType.php");
                             if(isset($container_type) AND $container_type !=null){
                                 
-                                for($i = 0; $i<$result = count($container_type); $i++){
-                                ?><div class="panel-body"><!-- a ajouter au href apres onclick="displayContainers(id du container)"-->
-                                        <a href="#" ><?php echo $container_type[$i] ?></a>
+                                for($e = 0; $e<count($container_type); $e++){
+                                    $varContainer = $container_type[$e];
+                                    //$idOfType = constructDivContainers($varContainer, $id_owner);
+                                ?><div class="panel-body">
+                                        <a href="#" onClick="displayContainers('<?php echo $varContainer ?>')">
+                                            <?php echo $container_type[$e] ?>
+                                        </a>
                                     </div>
                                 <?php
                                 }
+
                             }
                             else{
                                 echo 'You don\'t have containers';
                             }
                             ?>
-                                <div class="panel-body">
-                                    <div class="radio">
-                                        <label class="control-label">
-                                            <input type="radio" name="group" value="option1" checked>                                                                                                                                                                                                                                                                                                                                                                                    Oil        
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="panel-body">Sand               </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -155,21 +156,27 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                             <label class="control-label" for="exampleInputFile">Pick what you want</label>
                         </div>
                         <div class="checkbox">
-                            <label class="control-label">
-                                <input type="checkbox">                                                                Water&nbsp;
-                            </label>
-                            <label class="control-label crsa-selected">
-                                <input type="checkbox">                                                                Oil
-                            </label>
-                            <label class="control-label">
-                                <input type="checkbox">                                                                South
-                            </label>
-                            <label class="control-label">
-                                <input type="checkbox">                                                                North&nbsp;
-                            </label>
-                            <label class="control-label">
-                                <input type="checkbox">                                                                Alerts
-                            </label>
+                        <?php
+                            include("sqlContainers.php");
+                            //include("returnContainersByType.php");
+                            if(isset($container_type) AND $container_type !=null){
+                                
+                                for($e = 0; $e<count($container_type); $e++){
+                                    $varContainer = $container_type[$e];
+                                    //$idOfType = constructDivContainers($varContainer, $id_owner);
+                                ?>
+                                    <label class="control-label">
+                                        <input type="checkbox" onChange="displayContainersCheckbox('<?php echo $varContainer ?>')">
+                                        <?php echo $container_type[$e] ?>
+                                    </label>
+                                <?php
+                                }
+                            }
+                            else{
+                                echo 'You don\'t have containers';
+                            }
+                            ?>
+                            
                         </div>
                     </form>
                     <button type="submit" class="btn btn-default">Submit</button>

@@ -4,7 +4,7 @@ try
 {
 	// Connection to database
 	//$bdd = new PDO('mysql:host=localhost;dbname=mesTests;charset=utf8', 'root', '');
-    $bdd = new PDO('mysql:host=192.168.1.73;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
+    $bdd = new PDO('mysql:host=192.168.1.78;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
 }
 catch(Exception $e)
 {

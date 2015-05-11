@@ -1,20 +1,27 @@
 
+//grid is the principal division wich contain and display the elements
+var grid = null;
+//myElem is a array which contain all the elements of a user
+var myElem = [];
+// tabId contains the id of elements which are added on the grid
+var tabId = [];
+
 $(document).ready(function(){
-	var items = [];
-  alert("hey");
+  var items = [];
+  //alert("hey");
 
 
-  	$.ajax({
-  		dataType: "json",
-  		url: 'getContainers.php',
-  		success: function(result){
-        alert("su?");
-        var grid = $('.grid-stack').data('gridstack');
+    $.ajax({
+      dataType: "json",
+      url: 'getContainers.php',
+      success: function(result){
+        //alert("su?");
+        grid = $('.grid-stack').data('gridstack');
         
-  			result.forEach(function(d){
-  				items.push([d.id,d.content_type,d.name,d.max_value,d.alert_value]);
-          
-  			});
+        result.forEach(function(d){
+          items.push([d.id,d.content_type,d.name,d.max_value,d.alert_value]);
+        
+        });
 
         for(i=0; i<items.length;i++){
           
@@ -23,7 +30,7 @@ $(document).ready(function(){
             
               element = document.createElement("div");
               element.className ="grid-stack-item";
-              element.id = "gridstackitem" + i;
+              element.id = "gridstackitem" + items[i][0];
 
                content = document.createElement("div");
               content.className = "grid-stack-item-content";
@@ -43,7 +50,7 @@ $(document).ready(function(){
               span.appendChild(text);
               
 
-               div = document.createElement("div");
+              div = document.createElement("div");
 
               div.setAttribute("style","width: 400px; height: 200px;margin: 0 auto");
               div.style.width='400px';
@@ -69,6 +76,10 @@ $(document).ready(function(){
               content.appendChild(div);
               element.appendChild(content);
 
+              myElem.push([items[i][1],element, items[i][0]]);
+              myElem.push([items[i+1][1],element, items[i+1][0]]);
+
+
               grid.add_widget(element,1,1,3,4,true);
               
               initiateDoubleChart(div1.getAttribute('id'),items[i][1],items[i][3], items[i][4],div2.getAttribute('id'),items[i+1][1],items[i+1][3], items[i+1][4]);
@@ -81,7 +92,7 @@ $(document).ready(function(){
              
               element = document.createElement("div");
               element.className ="grid-stack-item";
-              element.id = "gridstackitem" + i;
+              element.id = "gridstackitem" + items[i][0];
 
               content = document.createElement("div");
               content.className = "grid-stack-item-content";
@@ -112,21 +123,73 @@ $(document).ready(function(){
 
               grid.add_widget(element,1,1,3,4,true);
               initiateChart(div.getAttribute('id'), items[i][1],items[i][3], items[i][4]);
-              
+
+              myElem.push([items[i][1],element, items[i][0]]  );
+
             }
           }
           
             getLastValues();
 
               }
-         }); 
+         });
+ 
 }); 
         
-  
-        
+  //for the selection of elements by type
+function displayContainers(type){
+  //selection des items du JSON par type
+  grid.remove_all();
+  tabId =[];
+  var b = false;
 
-        
+  for(i=0; i<myElem.length; i++){
+    b = false;
+    for(j=0; j<tabId.length; j++){
 
+      if(myElem[i][2] == tabId[j]){
+        b = true;
+
+        break;
+      }
+    }
+
+    if(myElem[i][0]==type && b == false){
+
+      grid.add_widget(myElem[i][1]);
+      alert('Voici le type du container : ' + type);
+      tabId.push(myElem[i][2]);
+
+    }
+  }
+}
+        
+function displayContainersCheckbox(type){
+  //selection des items du JSON par type
+  grid.remove_all();
+  tabId =[];
+  var b = false;
+
+  for(i=0; i<myElem.length; i++){
+    b = false;
+    for(j=0; j<tabId.length; j++){
+
+      if(myElem[i][2] == tabId[j]){
+        b = true;
+
+        break;
+      }
+    }
+
+    if(myElem[i][0]==type && b == false){
+
+      grid.add_widget(myElem[i][1]);
+      alert('Voici le type du container : ' + type);
+      tabId.push(myElem[i][2]);
+
+    }
+  }
+}
 
 
 

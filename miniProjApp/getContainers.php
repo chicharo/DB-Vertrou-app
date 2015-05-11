@@ -1,14 +1,20 @@
 <?php
-    $username = "user"; 
-    $password = "darzak";   
+    $usernameDB = "user"; 
+    $passwordDB = "darzak";   
     $host = "192.168.1.78";
     $database="sensoringDB";
-    
-    $server = mysql_connect($host, $username, $password);
-    $connection = mysql_select_db($database, $server);
 
+    /*$usernameDB = "root"; 
+    $passwordDB = "";   
+    $host = "localhost";
+    $database="mesTest";*/
+
+    // Connection to mySQL database
+    $server = mysql_connect($host, $usernameDB, $passwordDB);
+    $connection = mysql_select_db($database, $server);
+    
     $myquery = "
-SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` = (SELECT id FROM Users WHERE username = 'userTest'))
+SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` ='1')
 ";
     $query = mysql_query($myquery);
     
