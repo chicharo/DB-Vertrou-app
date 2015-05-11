@@ -1,21 +1,24 @@
 
 $(document).ready(function(){
 	var items = [];
-  var listItems = [];
+
+
+
   	$.ajax({
   		dataType: "json",
   		url: 'getContainers.php',
   		success: function(result){
+        
+        var grid = $('.grid-stack').data('gridstack');
+
   			result.forEach(function(d){
   				items.push([d.id,d.content_type,d.name,d.max_value,d.alert_value]);
-
+          
   			});
 
-        var grid = $('.grid-stack').data('gridstack');
-        
-          for(i =0; i<items.length;i++){
+        for(i=0; i<items.length;i++){
           
-            if(items[i+1][0] != null && items[i][0]==items[i+1][0]){
+            if(i<(items.length-1) && (items[i][0]==items[i+1][0])){
             
             
               element = document.createElement("div");
@@ -31,7 +34,7 @@ $(document).ready(function(){
               buttonClose.className = "close";
               buttonClose.id = "itemclose" + i;
               buttonClose.setAttribute("aria-hidden",true);
-              textButton = document.createTextNode("&times;");
+              textButton = document.createTextNode("x");
               buttonClose.appendChild(textButton);
 
               span = document.createElement("span");
@@ -89,7 +92,7 @@ $(document).ready(function(){
               buttonClose.className = "close";
               buttonClose.id = "itemclose" + i;
               buttonClose.setAttribute("aria-hidden",true);
-               textButton = document.createTextNode("&times;");
+               textButton = document.createTextNode("x");
               buttonClose.appendChild(textButton);
 
               span = document.createElement("span");
@@ -112,12 +115,68 @@ $(document).ready(function(){
               
             }
           }
-                
-          }
-      });
+          
+            getLastValues();
+
+       
+        }
+         });
+
+    // activate refresh on click button
+  document.getElementById('refresh').onclick = function () {
+      getLastValues();
+  };
            
-});    
+}); 
+
+        function loadScript(url, callback){
+           
+            // Adding the script tag to the head as suggested before
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
+
+            // Then bind the event to the callback function.
+            // There are several events for cross browser compatibility.
+            script.onreadystatechange = callback;
+            script.onload = callback;
+
+            // Fire the loading
+            head.appendChild(script);
+        };
+
         
+
+
+
+
+function getLastValues(){
+  var containersLastValues = [];
+
+  $.ajax({
+      dataType: "json",
+      url: 'getLastValues.php',
+      success: function(result){
+        result.forEach(function(d){
+          containersLastValues.push([d.id_container,d.content_type_container,d.value,d.date]);
+
+          });
+
+            for(i=0; i<containersLastValues.length; i++){
+                id = containersLastValues[i][0]+containersLastValues[i][1];
+                var intvalue = Math.floor( containersLastValues[i][2] );
+              
+
+                $('#'+id).highcharts().series[0].points[0].update(intvalue);
+
+                
+            }
+    }
+
+  });
+};
+   
         function initiateChart(id_div,type,max_value,alert_value) {
 
     $('#'+id_div).highcharts({
@@ -227,7 +286,7 @@ subtitle: {
 
   function initiateDoubleChart(id_div1,type1,max_value1,alert_value1,id_div2,type2,max_value2,alert_value2) {
 
-    var gaugeOptions = {
+    gaugeOptions = {
 
         chart: {
             type: 'solidgauge'
@@ -255,9 +314,8 @@ subtitle: {
         // the value axis
         yAxis: {
             stops: [
-                [0.3, '#DF5353'], // red
-                [0.3, '#DDDF0D'], // yellow
-                [0.3, '#55BF3B'] // green
+                [alert_value1/max_value1, '#DF5353'], // red
+                [(alert_value1/max_value1), '#55BF3B'] // green
             ],
             lineWidth: 0,
             minorTickInterval: null,
