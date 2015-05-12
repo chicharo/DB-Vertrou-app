@@ -165,7 +165,7 @@ function displayContainers(type){
       if(b == false){
 
         grid.add_widget(myElem[i][1]);
-        alert('Voici le type du container : ' + type);
+        //alert('Voici le type du container : ' + type);
         tabId.push(myElem[i][2]);
 
       }
@@ -181,17 +181,17 @@ function displayContainersAll(cb){
   bTabInstanciate = true;
 
 
-  alert('tmp' + tmptabCheckB);
+  //alert('tmp' + tmptabCheckB);
   if(checkB == true){
-    alert('checkB == true');
+    //alert('checkB == true');
     displayAll();
-    alert('on a toujours' + tabCheckB);
+    //alert('on a toujours' + tabCheckB);
   }
-  else{      alert('checkB != true' + tabCheckB);
+  else{      //alert('checkB != true' + tabCheckB);
     displayElements(tabCheckB);
   }
 
-  alert('tabCeckB depuis displayContAll a la fin : ' + tabCheckB);
+  //alert('tabCeckB depuis displayContAll a la fin : ' + tabCheckB);
 }
 
 
@@ -223,7 +223,7 @@ function createTabC(b){
     for(j=0;j<myElem.length;j++){
     //add to tabCheck the change
     if(tabCheckB.length > 0){
-      alert('le premier if');
+      //alert('le premier if');
       bool = false;
       for(i=0;i<tabCheckB.length;i++){
       //  alert('boucle for 1');
@@ -246,7 +246,7 @@ function createTabC(b){
   }
 
   }
-alert('apres create '+tabCheckB);
+//alert('apres create '+tabCheckB);
 }
 
 function displayElements(tabCheck){

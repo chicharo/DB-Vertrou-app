@@ -31,6 +31,15 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
 
     //Now, the user is identify with combination of corrects username and password
     if($_POST['password'] == $passwd){
+        session_start();
+
+        $_SESSION['id_user']=$id_owner;
+        $_SESSION['username'] = $username;
+
+
+
+
+
         include("sqlContainers.php");
 //---The HTML Page----------------------------------------------------------------------------------------------------
         ?>

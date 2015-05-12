@@ -12,9 +12,12 @@
     // Connection to mySQL database
     $server = mysql_connect($host, $usernameDB, $passwordDB);
     $connection = mysql_select_db($database, $server);
+
+    //To use the sessions values
+    session_start();
     
     $myquery = "
-SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` ='1')
+SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WHERE `id` IN ( SELECT `id_container` FROM `BelongsTo` WHERE `id_owner` ='".$_SESSION['id_user']."')
 ";
     $query = mysql_query($myquery);
     
