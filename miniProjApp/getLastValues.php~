@@ -13,8 +13,6 @@
     $server = mysql_connect($host, $usernameDB, $passwordDB);
     $connection = mysql_select_db($database, $server);
 
-//To use the sessions values 
-session_start();
 
 $data = array(); 
 
