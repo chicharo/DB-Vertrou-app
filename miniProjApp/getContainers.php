@@ -1,7 +1,7 @@
 <?php
     $usernameDB = "user"; 
     $passwordDB = "darzak";   
-    $host = "192.168.1.78";
+    $host = "192.168.1.65";
     $database="sensoringDB";
 
     /*$usernameDB = "root"; 

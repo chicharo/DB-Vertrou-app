@@ -4,7 +4,7 @@ try
 {
     // Connection to database
     //$bdd = new PDO('mysql:host=localhost;dbname=mesTests;charset=utf8', 'root', '');
-    $bdd = new PDO('mysql:host=192.168.1.78;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
+    $bdd = new PDO('mysql:host=192.168.1.65;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
 }
 catch(Exception $e)
 {
@@ -156,17 +156,24 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                             <label class="control-label" for="exampleInputFile">Pick what you want</label>
                         </div>
                         <div class="checkbox">
+                            
                         <?php
                             include("sqlContainers.php");
                             //include("returnContainersByType.php");
                             if(isset($container_type) AND $container_type !=null){
+                                ?>
+                                <label class="control-label">
+                                    <input type="checkbox" checked="checked" onChange="displayContainersAll(this)">
+                                    All
+                                </label>
+                                <?php
                                 
                                 for($e = 0; $e<count($container_type); $e++){
                                     $varContainer = $container_type[$e];
                                     //$idOfType = constructDivContainers($varContainer, $id_owner);
                                 ?>
                                     <label class="control-label">
-                                        <input type="checkbox" onChange="displayContainersCheckbox('<?php echo $varContainer ?>')">
+                                        <input type="checkbox" onChange="displayContainersCheckbox('<?php echo $varContainer ?>', this)">
                                         <?php echo $container_type[$e] ?>
                                     </label>
                                 <?php

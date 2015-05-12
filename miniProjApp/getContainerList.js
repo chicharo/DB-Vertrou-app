@@ -5,6 +5,12 @@ var grid = null;
 var myElem = [];
 // tabId contains the id of elements which are added on the grid
 var tabId = [];
+//tabCheckB contains all the types and if they are checked or not
+var tabCheckB = []; /* var for save*/ var tmptabCheckB = [];
+//is the tabCheckB instanciate ?
+var bTabInstanciate = false;
+//is the point All checked ?
+var bAll = false;
 
 $(document).ready(function(){
   var items = [];
@@ -138,59 +144,181 @@ $(document).ready(function(){
         
   //for the selection of elements by type
 function displayContainers(type){
-  //selection des items du JSON par type
   grid.remove_all();
   tabId =[];
   var b = false;
 
   for(i=0; i<myElem.length; i++){
-    b = false;
-    for(j=0; j<tabId.length; j++){
+    //if the element's type is the type of the checkpoint
+    if(myElem[i][0]==type){
 
-      if(myElem[i][2] == tabId[j]){
-        b = true;
+      b = false;
+      for(j=0; j<tabId.length; j++){
 
-        break;
+        if(myElem[i][2] == tabId[j]){
+          b = true;
+
+          break;
+        }
       }
-    }
 
-    if(myElem[i][0]==type && b == false){
+      if(b == false){
 
-      grid.add_widget(myElem[i][1]);
-      alert('Voici le type du container : ' + type);
-      tabId.push(myElem[i][2]);
+        grid.add_widget(myElem[i][1]);
+        alert('Voici le type du container : ' + type);
+        tabId.push(myElem[i][2]);
 
+      }
     }
   }
 }
+
+function displayContainersAll(cb){
+  checkB = cb.checked;
+  bAll = checkB;
+
+  createTabC(bTabInstanciate);
+  bTabInstanciate = true;
+
+
+  alert('tmp' + tmptabCheckB);
+  if(checkB == true){
+    alert('checkB == true');
+    displayAll();
+    alert('on a toujours' + tabCheckB);
+  }
+  else{      alert('checkB != true' + tabCheckB);
+    displayElements(tabCheckB);
+  }
+
+  alert('tabCeckB depuis displayContAll a la fin : ' + tabCheckB);
+}
+
+
         
-function displayContainersCheckbox(type){
-  //selection des items du JSON par type
-  grid.remove_all();
-  tabId =[];
-  var b = false;
+function displayContainersCheckbox(type, cb){
 
-  for(i=0; i<myElem.length; i++){
-    b = false;
-    for(j=0; j<tabId.length; j++){
+  checkB = cb.checked;
 
-      if(myElem[i][2] == tabId[j]){
-        b = true;
-
-        break;
+  createTabC(bTabInstanciate);
+  bTabInstanciate = true;
+  
+  //add to tabCheck the change
+    for(i=0;i<tabCheckB.length;i++){
+      //alert('boucle for 1 displayCheck');
+      if(type==tabCheckB[i][0]){
+          tabCheckB[i][1] = checkB;
       }
     }
-
-    if(myElem[i][0]==type && b == false){
-
-      grid.add_widget(myElem[i][1]);
-      alert('Voici le type du container : ' + type);
-      tabId.push(myElem[i][2]);
-
-    }
-  }
+  //laucnh the function which display the elements
+  displayElements(tabCheckB);
+ 
 }
 
+//function to create the check table type
+function createTabC(b){
+  var bool = false;
+
+  if(b==false){
+    for(j=0;j<myElem.length;j++){
+    //add to tabCheck the change
+    if(tabCheckB.length > 0){
+      alert('le premier if');
+      bool = false;
+      for(i=0;i<tabCheckB.length;i++){
+      //  alert('boucle for 1');
+        if(myElem[j][0]==tabCheckB[i][0]){
+
+        //alert('le type existe dans la table check');
+        bool = true;
+        break;
+        }
+      }
+      if(bool == false){
+        //alert('on ajoute une nouvelle ligne if1');
+        tabCheckB.push([myElem[j][0],false]);
+      }
+    }
+    else{
+     // alert('on ajoute une nouvelle ligne else2');
+      tabCheckB.push([myElem[0][0],false]);
+    }
+  }
+
+  }
+alert('apres create '+tabCheckB);
+}
+
+function displayElements(tabCheck){
+
+  if(bAll==true){
+    displayAll();
+  }
+  else{
+     //beginning of the handling
+  grid.remove_all();
+  tabId =[];
+  var bC = false;
+  var bI = false;
+  //browse all elements
+  for(i=0; i<myElem.length; i++){
+      bC = false;
+      //Is the type of Element is set to true ?
+      for(j=0;j<tabCheck.length;j++){
+        if(myElem[i][0]==tabCheck[j][0] && tabCheck[j][1]==true){
+          bC = true;
+          //alert('element de tabcheck à '  + tabCheck[j][1]);
+          break;
+        }
+      }
+
+      //Is the element already display on the Grid ?
+      bI = false;
+      for(j=0; j<tabId.length; j++){
+
+        if(myElem[i][2] == tabId[j]){
+          bI = true;
+          break;
+        }
+      }
+
+      //if all conditions are fulfilled we can add the element to the grid
+      if(bC == true && bI == false){
+        //alert('on doit ajouter là');
+        grid.add_widget(myElem[i][1]);
+        //alert('Voici le type du container : ' + type);
+        tabId.push(myElem[i][2]);
+      }
+
+  }
+  }
+  }
+
+function displayAll(){
+    grid.remove_all();
+    tabId =[];
+    var bI = false;
+    //browse all elements
+    for(i=0; i<myElem.length; i++){
+      //Is the element already display on the Grid ?
+      bI = false;
+      for(j=0; j<tabId.length; j++){
+
+        if(myElem[i][2] == tabId[j]){
+          bI = true;
+          break;
+        }
+      }
+
+      //if all conditions are fulfilled we can add the element to the grid
+      if(bI == false){
+        //alert('on doit ajouter là');
+        grid.add_widget(myElem[i][1]);
+        //alert('Voici le type du container : ' + type);
+        tabId.push(myElem[i][2]);
+      }
+  }
+}
 
 
 function getLastValues(){

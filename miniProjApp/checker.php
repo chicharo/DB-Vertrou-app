@@ -7,7 +7,7 @@
    try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=192.168.1.73;port=3306;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
+	$bdd = new PDO('mysql:host=192.168.1.65;port=3306;dbname=sensoringDB;charset=utf8', 'user', 'darzak');
 }
 catch(Exception $e)
 {
