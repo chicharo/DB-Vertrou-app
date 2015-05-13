@@ -130,7 +130,7 @@ function launchDashboard(){
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Logout</a>
+                            <a href="logout.php">Logout</a>
                         </li>
                     </ul>
                     <form class="navbar-form navbar-right">
@@ -257,9 +257,6 @@ function launchDashboard(){
                         <div class="grid-stack" data-gs-width="4">
 
 
-                                    
-                                    
-                         
             </div>
             </div> 
     </div>

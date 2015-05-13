@@ -24,7 +24,9 @@ $myquery = "
         WHERE D.id_container = '".$_SESSION['idContainer']."'
         AND D.id_container = B.id_container
         AND D.id_container = C.id
+        AND D.content_type_container = C.content_type
         AND id_owner = '".$_SESSION['id_user']."'
+        ORDER BY D.date
 ";
 
 $query = mysql_query($myquery);

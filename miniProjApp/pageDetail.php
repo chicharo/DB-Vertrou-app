@@ -20,6 +20,7 @@
         <title>Details</title>
 
         <script src="displayContainers.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
         <script src="bootstrap/js/jquery-1.10.2.js"></script> 
         <script src="bootstrap/js/bootstrap.js"></script> 
@@ -34,6 +35,12 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
+        <style>
+            #map-container{
+                height : 30%;
+            }
+        </style>
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -52,7 +59,7 @@
                             <a href="dashboard.php">Dashboard</a>
                         </li>
                         <li>
-                            <a id="refresh" href="#" >Refresh</a>
+                            <a id="refresh" href="pageDetail.php" >Refresh</a>
                         </li>
                         <li>
                             <a href="#">Settings</a>
@@ -61,7 +68,7 @@
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Logout</a>
+                            <a href="logout.php">Logout</a>
                         </li>
                     </ul>
                     <form class="navbar-form navbar-right">
@@ -76,6 +83,7 @@
                     <h2>Details</h2>
                     <hr></hr>
                     <hr></hr>
+                    <div id="map-container"></div>
                 </div>
         <div class="container-fluid">
             <div class="row">
@@ -89,7 +97,22 @@
     				</div>
 </div>
 				<div class="main col-sm-offset-2 col-xs-10 col-sm-10">
-                      <p>le tableau sera ICI</p>  
+                    <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th><div id="resTitleType"></div></th>
+                        <th>Values</th>
+                      </tr>
+                    </thead>
+                    <tbody id="myBody">
+                    <tr>
+                       <td><div id="resDate"> </div></td>
+                       <td><div id="resType"></div></td>
+                       <td><div id="resValue"> </div></td>
+                    </tr>
+                    </tbody>
+                    </table>
                 </div>
 
     </div>
@@ -120,7 +143,6 @@
 <script src="http://code.highcharts.com/modules/solid-gauge.js"></script>
 <script src="initiateGrid.js"></script>
 <script src="myCharts.js"></script>
-<script src ="getContainerList.js"></script>
 
 
 

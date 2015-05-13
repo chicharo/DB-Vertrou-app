@@ -10,7 +10,7 @@ var tabCheckB = []; /* var for save*/ var tmptabCheckB = [];
 //is the tabCheckB instanciate ?
 var bTabInstanciate = false;
 //is the point All checked ?
-var bAll = false;
+var bAll = true;
 
 $(document).ready(function(){
   var items = [];
@@ -37,7 +37,7 @@ $(document).ready(function(){
               element = document.createElement("div");
               element.className ="grid-stack-item";
               element.id = "gridstackitem" + items[i][0];
-
+              //alert('ajout de l\'id'+items[i][0]);
 
               content = document.createElement("div");
               content.className = "grid-stack-item-content";
@@ -78,19 +78,28 @@ $(document).ready(function(){
               div.appendChild(div1);
               div.appendChild(div2);
 
+              divAlert = document.createElement("div");
+              divAlert.className = "alert alert-warning";
+              divAlert.id = "alert"+items[i][0];
+
+
+              text = document.createTextNode("Be careful bro, this tank is low !");
+              divAlert.appendChild(text);
+
 
               content.appendChild(buttonClose);
               content.appendChild(span);
               content.appendChild(div);
+              content.appendChild(divAlert);
+              
               element.appendChild(content);
 
-              element.onclick=function(){
-                //alert('merci d\'avoir clické' + element.id);
-                pageDetail(element.id);
-              }
+
 
               myElem.push([items[i][1],element, items[i][0]]);
               myElem.push([items[i+1][1],element, items[i+1][0]]);
+
+             //alert('ajout ds myElem' + items[i][0]);
 
 
               grid.add_widget(element,1,1,3,4,true);
@@ -128,11 +137,25 @@ $(document).ready(function(){
               div.id = items[i][0]+items[i][1];
               div.setAttribute("style","width: 300px; height: 200px;");
 
+              divAlert = document.createElement("div");
+              divAlert.className = "alert alert-warning";
+              divAlert.id = "alert"+items[i][0];
+
+
+              text = document.createTextNode("Be careful bro, this tank is low !");
+              divAlert.appendChild(text);
+
 
               content.appendChild(buttonClose);
               content.appendChild(span);
               content.appendChild(div);
+              content.appendChild(divAlert);
               element.appendChild(content);
+              
+              element.onclick=function(){
+                //alert('merci d\'avoir clické' + element.id);
+                pageDetail(element.id);
+              }
 
               grid.add_widget(element,1,1,3,4,true);
               initiateChart(div.getAttribute('id'), items[i][1],items[i][3], items[i][4]);
@@ -141,6 +164,23 @@ $(document).ready(function(){
 
             }
           }
+          for(i=0;i<myElem.length;i++){
+            //alert('dans le for de onclick '+myElem[i][2]);
+            forOnClick(myElem[i][1],myElem[i][2]);
+          }
+          //hide the aler
+          for(k=0;k<items.length;k++){
+              $('#alert'+items[k][0]).hide();
+            }
+
+          function forOnClick(elem,id){
+            elem.onclick=function(){
+            //alert('merci d\'avoir clické '+id);
+            pageDetail(id);
+            }
+          }
+
+          displayAll();
           
             getLastValues();
 
@@ -149,13 +189,16 @@ $(document).ready(function(){
  
 });
 
+
+
 //redirection to the details page
 function pageDetail(id){
   var ID = ''+id+'&';
-  var monID = ID.substring(13, ID.indexOf('&'));
-  alert (monID);
+  var monID = ID.substring(ID.indexOf('k'), ID.indexOf('&'));
+  if($('#')){
 
-document.location.href="pageDetail.php?id="+monID+"";
+  }
+document.location.href="pageDetail.php?id="+monID+"&";
 }
   //for the selection of elements by type
 function displayContainers(type){
@@ -180,7 +223,6 @@ function displayContainers(type){
       if(b == false){
 
         grid.add_widget(myElem[i][1]);
-        //alert('Voici le type du container : ' + type);
         tabId.push(myElem[i][2]);
 
       }
@@ -196,17 +238,13 @@ function displayContainersAll(cb){
   bTabInstanciate = true;
 
 
-  //alert('tmp' + tmptabCheckB);
   if(checkB == true){
-    //alert('checkB == true');
     displayAll();
-    //alert('on a toujours' + tabCheckB);
   }
-  else{      //alert('checkB != true' + tabCheckB);
+  else{
     displayElements(tabCheckB);
   }
 
-  //alert('tabCeckB depuis displayContAll a la fin : ' + tabCheckB);
 }
 
 
@@ -220,7 +258,6 @@ function displayContainersCheckbox(type, cb){
   
   //add to tabCheck the change
     for(i=0;i<tabCheckB.length;i++){
-      //alert('boucle for 1 displayCheck');
       if(type==tabCheckB[i][0]){
           tabCheckB[i][1] = checkB;
       }
@@ -238,30 +275,24 @@ function createTabC(b){
     for(j=0;j<myElem.length;j++){
     //add to tabCheck the change
     if(tabCheckB.length > 0){
-      //alert('le premier if');
       bool = false;
       for(i=0;i<tabCheckB.length;i++){
-      //  alert('boucle for 1');
         if(myElem[j][0]==tabCheckB[i][0]){
 
-        //alert('le type existe dans la table check');
         bool = true;
         break;
         }
       }
       if(bool == false){
-        //alert('on ajoute une nouvelle ligne if1');
         tabCheckB.push([myElem[j][0],false]);
       }
     }
     else{
-     // alert('on ajoute une nouvelle ligne else2');
       tabCheckB.push([myElem[0][0],false]);
     }
   }
 
   }
-//alert('apres create '+tabCheckB);
 }
 
 function displayElements(tabCheck){
@@ -282,7 +313,6 @@ function displayElements(tabCheck){
       for(j=0;j<tabCheck.length;j++){
         if(myElem[i][0]==tabCheck[j][0] && tabCheck[j][1]==true){
           bC = true;
-          //alert('element de tabcheck à '  + tabCheck[j][1]);
           break;
         }
       }
@@ -299,9 +329,7 @@ function displayElements(tabCheck){
 
       //if all conditions are fulfilled we can add the element to the grid
       if(bC == true && bI == false){
-        //alert('on doit ajouter là');
         grid.add_widget(myElem[i][1]);
-        //alert('Voici le type du container : ' + type);
         tabId.push(myElem[i][2]);
       }
 
@@ -327,9 +355,7 @@ function displayAll(){
 
       //if all conditions are fulfilled we can add the element to the grid
       if(bI == false){
-        //alert('on doit ajouter là');
         grid.add_widget(myElem[i][1]);
-        //alert('Voici le type du container : ' + type);
         tabId.push(myElem[i][2]);
       }
   }
