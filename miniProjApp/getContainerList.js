@@ -38,7 +38,8 @@ $(document).ready(function(){
               element.className ="grid-stack-item";
               element.id = "gridstackitem" + items[i][0];
 
-               content = document.createElement("div");
+
+              content = document.createElement("div");
               content.className = "grid-stack-item-content";
               content.id = "gridstackitemcontent" + i;
               content.style.outline = "1px solid black";
@@ -77,10 +78,16 @@ $(document).ready(function(){
               div.appendChild(div1);
               div.appendChild(div2);
 
+
               content.appendChild(buttonClose);
               content.appendChild(span);
               content.appendChild(div);
               element.appendChild(content);
+
+              element.onclick=function(){
+                //alert('merci d\'avoir clické' + element.id);
+                pageDetail(element.id);
+              }
 
               myElem.push([items[i][1],element, items[i][0]]);
               myElem.push([items[i+1][1],element, items[i+1][0]]);
@@ -140,8 +147,16 @@ $(document).ready(function(){
               }
          });
  
-}); 
-        
+});
+
+//redirection to the details page
+function pageDetail(id){
+  var ID = ''+id+'&';
+  var monID = ID.substring(13, ID.indexOf('&'));
+  alert (monID);
+
+document.location.href="pageDetail.php?id="+monID+"";
+}
   //for the selection of elements by type
 function displayContainers(type){
   grid.remove_all();
@@ -172,7 +187,7 @@ function displayContainers(type){
     }
   }
 }
-
+//the function which is aunch when you select or deselect 'All'
 function displayContainersAll(cb){
   checkB = cb.checked;
   bAll = checkB;

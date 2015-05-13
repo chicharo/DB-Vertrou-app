@@ -1,5 +1,6 @@
 
     <?php
+    session_start();
 try
 {
     // Connection to database
@@ -12,6 +13,14 @@ catch(Exception $e)
         die('Erreur : '.$e->getMessage());
 }
 
+if(isset($_SESSION['id_user']) && $_SESSION['id_user']!=null){
+    $id_owner = $_SESSION['id_user'];
+    include("sqlContainers.php");
+
+    launchDashboard();
+}
+
+else{
 //if there is an username and a password entered in the fields
 if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password'] != null AND isset($_POST['password'])){
 //indentfication with password
@@ -31,18 +40,44 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
 
     //Now, the user is identify with combination of corrects username and password
     if($_POST['password'] == $passwd){
-        session_start();
-
+        
         $_SESSION['id_user']=$id_owner;
         $_SESSION['username'] = $username;
-
-
-
+        $_SESSION['password'] = $passwd;
 
 
         include("sqlContainers.php");
+        launchDashboard();
+
+    }
+    else{
+        echo 'Login or password incorrect';?>
+        <head>
+
+        <title>Return to index</title>
+
+        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
+        </head>
+        <?php
+    }
+}
+else{
+    echo 'Please, enter your login and password';?>
+        <head>
+
+        <title>Return to index</title>
+
+        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
+        </head>
+        <?php
+}
+}
+
 //---The HTML Page----------------------------------------------------------------------------------------------------
-        ?>
+
+function launchDashboard(){
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -86,7 +121,7 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                             <a href="#">Dashboard</a>
                         </li>
                         <li>
-                            <a id="refresh" href="#" >Refresh</a>
+                            <a id="refresh" href="dashboard.php" >Refresh</a>
                         </li>
                         <li>
                             <a href="#">Settings</a>
@@ -116,6 +151,7 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
                             <?php
+                            $id_owner = $_SESSION['id_user'];
                             include("sqlContainers.php");
                             //include("returnContainersByType.php");
                             if(isset($container_type) AND $container_type !=null){
@@ -275,28 +311,6 @@ if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password
 </html>
 
         <?php
+}
 //end of HTML page-----------------------------------------------------------------------------------------
-    }
-    else{
-        echo 'Login or password incorrect';?>
-        <head>
-
-        <title>Return to index</title>
-
-        <meta http-equiv="refresh" content="3; URL=index.html">
-        </head>
-        <?php
-    }
-}
-else{
-    echo 'Please, enter your login and password';?>
-        <head>
-
-        <title>Return to index</title>
-
-        <meta http-equiv="refresh" content="3; URL=index.html">
-        </head>
-        <?php
-}
-
 ?>

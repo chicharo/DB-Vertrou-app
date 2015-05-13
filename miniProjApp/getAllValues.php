@@ -18,16 +18,15 @@ session_start();
 
 $data = array(); 
 
-$myquery = "
-SELECT `id_container`,`content_type_container`,`value`,`date`
-  FROM `Datas` WHERE `date` IN (SELECT MAX( `date` )
-                                FROM `Datas` WHERE `id_container` 
-                                IN (Select `id_container`FROM `BelongsTo`
-                                     where `id_owner` = '".$_SESSION['id_user']."')
-                                GROUP BY `id_container`,`content_type_container`
-  )
-  ORDER BY `id_container` ASC , `date` DESC
+$myquery = " 
+        SELECT value, D.date, content_type_container, name
+        FROM Datas D, BelongsTo B, Containers C
+        WHERE D.id_container = '".$_SESSION['idContainer']."'
+        AND D.id_container = B.id_container
+        AND D.id_container = C.id
+        AND id_owner = '".$_SESSION['id_user']."'
 ";
+
 $query = mysql_query($myquery);
 
 
