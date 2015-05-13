@@ -14,14 +14,12 @@ var bAll = true;
 
 $(document).ready(function(){
   var items = [];
-  //alert("hey");
 
 
     $.ajax({
       dataType: "json",
       url: 'getContainers.php',
       success: function(result){
-        //alert("su?");
         grid = $('.grid-stack').data('gridstack');
         
         result.forEach(function(d){
@@ -37,7 +35,6 @@ $(document).ready(function(){
               element = document.createElement("div");
               element.className ="grid-stack-item";
               element.id = "gridstackitem" + items[i][0];
-              //alert('ajout de l\'id'+items[i][0]);
 
               content = document.createElement("div");
               content.className = "grid-stack-item-content";
@@ -153,7 +150,6 @@ $(document).ready(function(){
               element.appendChild(content);
               
               element.onclick=function(){
-                //alert('merci d\'avoir clické' + element.id);
                 pageDetail(element.id);
               }
 
@@ -165,7 +161,6 @@ $(document).ready(function(){
             }
           }
           for(i=0;i<myElem.length;i++){
-            //alert('dans le for de onclick '+myElem[i][2]);
             forOnClick(myElem[i][1],myElem[i][2]);
           }
           //hide the aler
@@ -175,7 +170,6 @@ $(document).ready(function(){
 
           function forOnClick(elem,id){
             elem.onclick=function(){
-            //alert('merci d\'avoir clické '+id);
             pageDetail(id);
             }
           }
