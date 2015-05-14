@@ -182,8 +182,9 @@ $(document).ready(function(){
           /**
            * attach an event onClick
            * @method forOnClick
-           * @param {} elem
-           * @param {} id
+           * @param {} elem the element
+           * @param {} id the id of the container, param to the function pageDetail
+           *@see pageDetail
            * 
            */
           function forOnClick(elem,id){
@@ -212,7 +213,7 @@ $(document).ready(function(){
 /**
  * This function allows the redirection to the details page with the user's id in.
  * @method pageDetail
- * @param {} id
+ * @param {} id the id of the container which is transmetted by the URL
  *  
  */
 function pageDetail(id){
@@ -262,7 +263,7 @@ function displayContainers(type){
 /**
  * this function is launch when you select or deselect 'All'
  * @method displayContainersAll
- * @param {} cb
+ * @param {} cb Boolean - The result of "Is the box checked?"
  *  
  */
 function displayContainersAll(cb){
@@ -287,8 +288,8 @@ function displayContainersAll(cb){
 /**
  * This method is launch when the user click on a element type in the Checkbox. It launch methods for diplay the good elements
  * @method displayContainersCheckbox
- * @param {} type
- * @param {} cb
+ * @param {} type Type of the container
+ * @param {} cb Boolean - The result of "Is the box checked?"
  *  
  */
 function displayContainersCheckbox(type, cb){
@@ -313,7 +314,7 @@ function displayContainersCheckbox(type, cb){
 /**
  * function to create the check table type
  * @method createTabC
- * @param {} b
+ * @param {} b a boolean to know if the table tabCheckB is already initialise
  *  
  */
 function createTabC(b){
@@ -346,7 +347,7 @@ function createTabC(b){
 /**
  * This method display all the elements depending on the checkbox
  * @method displayElements
- * @param {} tabCheck
+ * @param {} tabCheck 
  * 
  */
 function displayElements(tabCheck){

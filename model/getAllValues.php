@@ -1,9 +1,7 @@
 <?php
 /**
 *@author Olivier Peurichard & Etienne Marois
-*/
-
-/**
+*
 * Return in a JSON format all the values from the current container of the current user.
 */
 

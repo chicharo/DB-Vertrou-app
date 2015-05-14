@@ -1,9 +1,7 @@
 <?php
 /**
 *@author Olivier Peurichard & Etienne Marois
-*/
-
-/**
+*
 * Return in a JSON format the last values from all the containers of the current user.
 */
 
@@ -14,7 +12,9 @@ include('connectionDB.php');
 session_start();
 
 $data = array(); 
-
+/**
+* $sql contain the query
+*/
 $sql = "
 SELECT `id_container`,`content_type_container`,`value`,`date`
   FROM `Datas` WHERE `date` IN (SELECT MAX( `date` )
@@ -26,8 +26,14 @@ SELECT `id_container`,`content_type_container`,`value`,`date`
   ORDER BY `id_container` ASC , `date` DESC
 ";
 
+/**
+*Launch the query
+*/
 $query = $bdd->query($sql);
 
+/**
+*Store the query in an array and encode her to JSON format
+*/
 $data = $query->fetchAll();
     echo json_encode($data);
 

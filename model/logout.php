@@ -1,19 +1,22 @@
 <?php
 /**
 *@author Olivier Peurichard & Etienne Marois
-*/
-
-/**
+*
 * Disconnect the user and redirects to the home page.
 */
 session_start();
  
-// Détruisez les variables de session 
+/**
+*Delete the session variable
+*/
 $_SESSION = array();
  
 
  
 // Détruisez la session 
+/**
+* Delete the session
+*/
 session_destroy();
 ?>
 <head>
