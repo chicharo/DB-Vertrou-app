@@ -143,6 +143,15 @@
                 
             }
             init_map();
+
+            for(i=1;i<3;i++){
+                document.getElementById('radio'+i).onclick=function(){
+                    
+
+                    changeChartType(true);
+
+                }
+            }
     }
 
 
@@ -345,4 +354,65 @@ function init_map() {
  
       }
     });
+}
+var idContSession;
+
+$.ajax({
+
+      dataType: "json",
+      url: '../model/getSessionIdCont.php',
+
+      success: function(result){
+        
+        
+        result.forEach(function(d){
+          idContSession =d.id;
+        
+        });
+      }
+    });
+
+function changeChartType(redraw) {
+    var type = 'line';
+
+    var column = document.getElementById('radio2');
+    var line = document.getElementById('radio1');
+    //var idContSession;
+
+    
+
+    if(column.checked)
+    {
+        type="column";       
+    chart = $('#contChart').highcharts();     
+    var seriesOptions = new Array(chart.series.length);
+
+    for (i = 0;i <chart.series.length;i++) {         
+        var series = chart.series[i];
+        seriesOptions[i] = {             
+            type: type,
+            name: series.name,
+            color: series.color,
+            dashStyle: series.options.dashStyle,
+            lineWidth: series.options.lineWidth,
+             marker: series.options.marker,
+             dataLabels: series.options.dataLabels,
+             enableMouseTracking: series.options.enableMouseTracking,
+             data: series.options.data,
+             isRegressionLine: series.options.isRegressionLine
+         };
+    }     
+    for (i = chart.series.length - 1;i >= 0;i--) {
+        chart.series[i].destroy();
+    }     
+    for (i = 0;i <seriesOptions.length;i++) {
+        var bool = redraw && (i == seriesOptions.length - 1);
+        var newSeries = chart.addSeries(seriesOptions[i],bool);
+    }     
+    chart.currentType = type;
+    }
+    else{
+
+        document.location.href="../vue/pageDetail.php?id="+idContSession+"";
+    }
 }

@@ -2,6 +2,9 @@
 /**
 *@author Olivier Peurichard & Etienne Marois
 */
+/**
+*Take the id of the container 
+*/
     session_start();
 
         $idContainer = null;
@@ -95,6 +98,9 @@
 
                     	</div>
     				</div>
+
+                    <input type="radio" name="mychart" class="mychart" id= "radio1" value="line" checked>Line</inuput>
+                        <input type="radio" name="mychart" class="mychart" id= "radio2" value="column"  >Column</inuput>
 </div>
 				<div class="main col-sm-offset-2 col-xs-10 col-sm-10">
                     <table class="table table-striped">
