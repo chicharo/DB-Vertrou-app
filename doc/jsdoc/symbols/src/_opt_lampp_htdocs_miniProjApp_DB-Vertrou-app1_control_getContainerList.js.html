@@ -185,40 +185,40 @@
 <span class='line'>178</span> </span><span class="WHIT">              </span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'#alert'</span><span class="PUNC">+</span><span class="NAME">items</span><span class="PUNC">[</span><span class="NAME">k</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>179</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>180</span> 
-<span class='line'>181</span> </span><span class="WHIT">          </span><span class="COMM">/**
-<span class='line'>182</span>            * attach an event onClick
-<span class='line'>183</span>            *Launch the pageDetail() function with the id in parameter
-<span class='line'>184</span>            *
-<span class='line'>185</span>            *
-<span class='line'>186</span>            * @see pageDetail The function which is launch in the onClick on the element ie when you click on an element
-<span class='line'>187</span>            * @method forOnClick
-<span class='line'>188</span>            * @param {} elem the element
-<span class='line'>189</span>            * @param {} id the id of the container, param to the function pageDetail
-<span class='line'>190</span>            */</span><span class="WHIT">
-<span class='line'>191</span> </span><span class="WHIT">          </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">forOnClick</span><span class="PUNC">(</span><span class="NAME">elem</span><span class="PUNC">,</span><span class="NAME">id</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>181</span> 
+<span class='line'>182</span> 
+<span class='line'>183</span> </span><span class="WHIT">          </span><span class="NAME">displayAll</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">          </span><span class="NAME">initiatePagination</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">          
+<span class='line'>186</span>             </span><span class="NAME">getLastValues</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> 
+<span class='line'>188</span> </span><span class="WHIT">              </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">         </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT"> 
+<span class='line'>191</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>192</span> 
-<span class='line'>193</span> </span><span class="WHIT">            </span><span class="NAME">elem.onclick</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>194</span> </span><span class="WHIT">            </span><span class="NAME">pageDetail</span><span class="PUNC">(</span><span class="NAME">id</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>195</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>196</span> </span><span class="WHIT">          </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>197</span> 
-<span class='line'>198</span> </span><span class="WHIT">          </span><span class="NAME">displayAll</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>199</span> </span><span class="WHIT">          </span><span class="NAME">initiatePagination</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>200</span> </span><span class="WHIT">          
-<span class='line'>201</span>             </span><span class="NAME">getLastValues</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>202</span> 
-<span class='line'>203</span> </span><span class="WHIT">              </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>204</span> </span><span class="WHIT">         </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>205</span> </span><span class="WHIT"> 
-<span class='line'>206</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>207</span> 
-<span class='line'>208</span> 
+<span class='line'>193</span> </span><span class="COMM">/**
+<span class='line'>194</span> * attach an event onClick
+<span class='line'>195</span> *Launch the pageDetail() function with the id in parameter
+<span class='line'>196</span> *
+<span class='line'>197</span> *
+<span class='line'>198</span> * @see pageDetail(id) The function which is launch in the onClick on the element ie when you click on an element
+<span class='line'>199</span> * @method forOnClick
+<span class='line'>200</span> * @param {} elem the element
+<span class='line'>201</span> * @param {} id the id of the container, param to the function pageDetail
+<span class='line'>202</span>            */</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">forOnClick</span><span class="PUNC">(</span><span class="NAME">elem</span><span class="PUNC">,</span><span class="NAME">id</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>204</span> 
+<span class='line'>205</span> </span><span class="WHIT">  </span><span class="NAME">elem.onclick</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">    </span><span class="NAME">pageDetail</span><span class="PUNC">(</span><span class="NAME">id</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>209</span> 
 <span class='line'>210</span> </span><span class="COMM">/**
 <span class='line'>211</span>  * This function allows the redirection to the details page with the user's id in.
 <span class='line'>212</span>  * @method pageDetail
 <span class='line'>213</span>  * @param {} id the id of the container which is transmetted by the URL
-<span class='line'>214</span>  *@see onClick This function is launch by onClick, ie when you click on an element
+<span class='line'>214</span>  *@see forOnClick This function is launch by onClick, ie when you click on an element
 <span class='line'>215</span>  */</span><span class="WHIT">
 <span class='line'>216</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">pageDetail</span><span class="PUNC">(</span><span class="NAME">id</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>217</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ID</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">+</span><span class="NAME">id</span><span class="PUNC">+</span><span class="STRN">'&'</span><span class="PUNC">;</span><span class="WHIT">
