@@ -345,7 +345,7 @@ function createTabC(b){
 function displayElements(tabCheck){
 
   if(bAll==true){
-    displayAll(1);
+    displayAll();
   }
   else{
      //beginning of the handling
