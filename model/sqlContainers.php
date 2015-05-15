@@ -4,6 +4,7 @@
 *
 * Return a table which contain the containers' types the current user.
 */
+$adoc;
 
 include('connectionDB.php');
 

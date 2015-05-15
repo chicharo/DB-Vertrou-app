@@ -30,7 +30,6 @@ $(document).ready(function(){
        * This function use the JSON file and store it in the table items
        * @method success
        * @param {} result the JSON file
-       * @return the table item which contain the specification of an element
        */
       success: function(result){
         grid = $('.grid-stack').data('gridstack');
@@ -181,18 +180,16 @@ $(document).ready(function(){
 
           /**
            * attach an event onClick
+           *Launch the pageDetail() function with the id in parameter
+           *
+           *
+           * @see pageDetail The function which is launch in the onClick on the element ie when you click on an element
            * @method forOnClick
            * @param {} elem the element
            * @param {} id the id of the container, param to the function pageDetail
-           *@see pageDetail
-           * 
            */
           function forOnClick(elem,id){
-            /**
-             * Launch the pageDetail() function with the id in parameter
-             * @method onclick
-             *  
-             */
+
             elem.onclick=function(){
             pageDetail(id);
             }
@@ -214,7 +211,7 @@ $(document).ready(function(){
  * This function allows the redirection to the details page with the user's id in.
  * @method pageDetail
  * @param {} id the id of the container which is transmetted by the URL
- *  
+ *@see onClick This function is launch by onClick, ie when you click on an element
  */
 function pageDetail(id){
   var ID = ''+id+'&';
@@ -229,7 +226,6 @@ document.location.href="../vue/pageDetail.php?id="+monID+"";
  * This method permetted to display all the elements of the type
  * @method displayContainers
  * @param {} type
- *  
  */
 function displayContainers(type){
   grid.remove_all();
@@ -264,7 +260,6 @@ function displayContainers(type){
  * this function is launch when you select or deselect 'All'
  * @method displayContainersAll
  * @param {} cb Boolean - The result of "Is the box checked?"
- *  
  */
 function displayContainersAll(cb){
   checkB = cb.checked;
@@ -290,7 +285,6 @@ function displayContainersAll(cb){
  * @method displayContainersCheckbox
  * @param {} type Type of the container
  * @param {} cb Boolean - The result of "Is the box checked?"
- *  
  */
 function displayContainersCheckbox(type, cb){
 
@@ -312,10 +306,9 @@ function displayContainersCheckbox(type, cb){
 
 
 /**
- * function to create the check table type
+ * function to create the table of type with the checked false by default
  * @method createTabC
  * @param {} b a boolean to know if the table tabCheckB is already initialise
- *  
  */
 function createTabC(b){
   var bool = false;
@@ -348,7 +341,6 @@ function createTabC(b){
  * This method display all the elements depending on the checkbox
  * @method displayElements
  * @param {} tabCheck 
- * 
  */
 function displayElements(tabCheck){
 
@@ -393,10 +385,10 @@ function displayElements(tabCheck){
   }
 
 /**
- * Display all the documents
- * @method displayAll
- *  
- */
+  * Display all the documents
+  * @method displayAll
+  * @param {} page
+  */
  function displayAll(page){
     grid.remove_all();
     tabId =[];
@@ -405,33 +397,46 @@ function displayElements(tabCheck){
     //browse all elements
 
       for(i=(page-1)*12; i<myElem.length && nb<12; i++){
-      //Is the element already display on the Grid ?
-      bI = false;
-      for(j=0; j<tabId.length; j++){
+        //Is the element already display on the Grid ?
+        bI = false;
+        for(j=0; j<tabId.length; j++){
 
-        if(myElem[i][2] == tabId[j]){
+          if(myElem[i][2] == tabId[j]){
+            bI = true;
+            break;
+          }
+        }
 
-          bI = true;
-          break;
+        //if all conditions are fulfilled we can add the element to the grid
+        if(bI == false){
+          grid.add_widget(myElem[i][1]);
+          tabId.push(myElem[i][2]);
+          nb++;
         }
       }
-
-      //if all conditions are fulfilled we can add the element to the grid
-      if(bI == false){
-        grid.add_widget(myElem[i][1]);
-        tabId.push(myElem[i][2]);
-        nb++;
-      }
-  }
 }
 
+/**
+ * This function add an onClick for the functionnality pagination
+ * @method addOnClickPagination
+ * @param {} id
+ */
 function addOnClickPagination(id){
+    /**
+     * Description
+     * @method onclick
+     */
     document.getElementById('link'+id).onclick=function(){
       displayAll(id);
     
   }
 }
 
+/**
+ * Initiate the pagination
+ *How many pages, which element in them...
+ * @method initiatePagination
+ */
 function initiatePagination(){
   var page = document.getElementById("pagination");
   
@@ -443,18 +448,18 @@ function initiatePagination(){
   
 
   for(i=1; i<nb_page+1;i++){
-        list = document.createElement('li');
+    list = document.createElement('li');
         
 
-        link= document.createElement('a');
-        link.id ="link"+i;
-        linkText = document.createTextNode(i);
-        link.appendChild(linkText);
+    link= document.createElement('a');
+    link.id ="link"+i;
+    linkText = document.createTextNode(i);
+    link.appendChild(linkText);
 
-        list.appendChild(link);
+    list.appendChild(link);
 
 
-        page.appendChild(list);
+    page.appendChild(list);
   }
 
   for(i=1; i<nb_page+1;i++){
@@ -465,7 +470,6 @@ function initiatePagination(){
 /**
  * This method get the last values of the active container.
  * @method getLastValues
- *  
  */
 function getLastValues(){
   var containersLastValues = [];
@@ -486,13 +490,11 @@ function getLastValues(){
           });
 
             for(i=0; i<containersLastValues.length; i++){
-                id = containersLastValues[i][0]+containersLastValues[i][1];
-                var intvalue = Math.floor( containersLastValues[i][2] );
+              id = containersLastValues[i][0]+containersLastValues[i][1];
+              var intvalue = Math.floor( containersLastValues[i][2] );
               
 
-                $('#'+id).highcharts().series[0].points[0].update(intvalue);
-
-                
+              $('#'+id).highcharts().series[0].points[0].update(intvalue);    
             }
     }
 

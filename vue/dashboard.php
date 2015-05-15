@@ -1,5 +1,4 @@
-
-    <?php
+<?php
 /**
 *@author Olivier Peurichard & Etienne Marois
 */
@@ -153,7 +152,7 @@ function launchDashboard(){
                     <div class="panel-group" id="panels1">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse1">                            1st Option</a></h4>
+                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse1">Choice by Type</a></h4>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
                             <?php
@@ -185,7 +184,7 @@ function launchDashboard(){
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse2">                                2nd Option                                </a></h4>
+                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse2">Other Option 2</a></h4>
                             </div>
                             <div id="collapse2" class="panel-collapse collapse">
                                 <div class="panel-body">                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.                            </div>
@@ -193,7 +192,7 @@ function launchDashboard(){
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse3">                                3rd Option                                </a></h4>
+                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse3">Other option 3</a></h4>
                             </div>
                             <div id="collapse3" class="panel-collapse collapse">
                                 <div class="panel-body">                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.                            </div>

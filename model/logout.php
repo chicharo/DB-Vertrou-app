@@ -4,6 +4,7 @@
 *
 * Disconnect the user and redirects to the home page.
 */
+$adoc;
 session_start();
  
 /**

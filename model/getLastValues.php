@@ -4,7 +4,7 @@
 *
 * Return in a JSON format the last values from all the containers of the current user.
 */
-
+$adoc;
 include('connectionDB.php');
 
 

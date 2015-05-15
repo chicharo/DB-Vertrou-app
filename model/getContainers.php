@@ -4,7 +4,7 @@
 *
 * Return in a JSON format all the containers from the current user.
 */
-
+$adoc;
 include('connectionDB.php');
 
 

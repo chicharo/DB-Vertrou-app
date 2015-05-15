@@ -4,7 +4,7 @@
 *
 * return in JSON format the geolocalisation of the current container.
 */
-
+$adoc;
 include('connectionDB.php');
 
 session_start();

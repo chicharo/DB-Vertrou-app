@@ -2,12 +2,10 @@
 /**
 *@author Olivier Peurichard & Etienne Marois
 *
-*This file contain the connection to the database
+*This file contain the connection to the database with PDO
 */
+$adoc;
 
-/**
-*Connection to database with PDO
-*/
 try{
     // Connection to database
     /**

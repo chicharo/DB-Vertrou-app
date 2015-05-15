@@ -254,29 +254,9 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/_global_.html#containerAllValues">containerAllValues</a></b>
-								</div>
-								<div class="description">The table which contain the values (and other specifications) of the container(s)</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
 								<b><a href="../symbols/_global_.html#grid">grid</a></b>
 								</div>
 								<div class="description">grid is the principal division wich contain and display the elements</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/_global_.html#isDoubleType">isDoubleType</a></b>
-								</div>
-								<div class="description">Is the container a double type?</div>
 							</td>
 						</tr>
 					
@@ -344,9 +324,18 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#addOnClickPagination">addOnClickPagination</a></b>(id)
+								</div>
+								<div class="description">This function add an onClick for the functionnality pagination</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#createTabC">createTabC</a></b>(b)
 								</div>
-								<div class="description">function to create the check table type</div>
+								<div class="description">function to create the table of type with the checked false by default</div>
 							</td>
 						</tr>
 					
@@ -407,36 +396,9 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/_global_.html#init_map">init_map</a></b>()
-								</div>
-								<div class="description">Initiate the localisation of the container with a map</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#initiateChart">initiateChart</a></b>(id_div, type, max_value, alert_value)
 								</div>
 								<div class="description">Initiate the Charts of last values with highchart</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/_global_.html#initiateDetails">initiateDetails</a></b>(type, title, dataTab, datesTab)
-								</div>
-								<div class="description">Initiate the chart of the container with one type</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/_global_.html#initiateDetailsTwo">initiateDetailsTwo</a></b>(type1, type2, title, dataTab, dataTab2, datesTab)
-								</div>
-								<div class="description">Initiate the chart of the container with two types (he contain 2 containers)</div>
 							</td>
 						</tr>
 					
@@ -452,18 +414,10 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/_global_.html#initiateTab">initiateTab</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#initiatePagination">initiatePagination</a></b>()
 								</div>
-								<div class="description">Initiate the table of values for the simple container</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/_global_.html#initiateTabTwo">initiateTabTwo</a></b>()
-								</div>
-								<div class="description">Initiate the table of values for the double container</div>
+								<div class="description">Initiate the pagination
+How many pages, which element in them.</div>
 							</td>
 						</tr>
 					
@@ -544,31 +498,6 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="containerAllValues"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>containerAllValues</b>
-					
-					</div>
-					<div class="description">
-						The table which contain the values (and other specifications) of the container(s)
-						
-							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
 					<a name="grid"> </a>
 					<div class="fixedFont">
 					
@@ -581,31 +510,6 @@ ul.inheritsList
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_getContainerList.js.html">getContainerList.js</a>.
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="isDoubleType"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>isDoubleType</b>
-					
-					</div>
-					<div class="description">
-						Is the container a double type?
-						
-							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
 						
 						
 					</div>
@@ -727,6 +631,45 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
+					<a name="addOnClickPagination"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>addOnClickPagination</b>(id)
+					
+					</div>
+					<div class="description">
+						This function add an onClick for the functionnality pagination
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_getContainerList.js.html">getContainerList.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>id</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="createTabC"> </a>
 					<div class="fixedFont">
 					
@@ -735,7 +678,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						function to create the check table type
+						function to create the table of type with the checked false by default
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_getContainerList.js.html">getContainerList.js</a>.
@@ -995,34 +938,6 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="init_map"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>init_map</b>()
-					
-					</div>
-					<div class="description">
-						Initiate the localisation of the container with a map
-						
-							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
 					<a name="initiateChart"> </a>
 					<div class="fixedFont">
 					
@@ -1068,132 +983,6 @@ ul.inheritsList
 									
 								</dt>
 								<dd>If the container reached this value, there is an alert</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="initiateDetails"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>initiateDetails</b>(type, title, dataTab, datesTab)
-					
-					</div>
-					<div class="description">
-						Initiate the chart of the container with one type
-						
-							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>type</b>
-									
-								</dt>
-								<dd>Type of container.</dd>
-							
-								<dt>
-									<b>title</b>
-									
-								</dt>
-								<dd>Name of container.</dd>
-							
-								<dt>
-									<b>dataTab</b>
-									
-								</dt>
-								<dd>Table which contain the values of the second container.</dd>
-							
-								<dt>
-									<b>datesTab</b>
-									
-								</dt>
-								<dd>Table which contain the dates of values.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="initiateDetailsTwo"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>initiateDetailsTwo</b>(type1, type2, title, dataTab, dataTab2, datesTab)
-					
-					</div>
-					<div class="description">
-						Initiate the chart of the container with two types (he contain 2 containers)
-						
-							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>type1</b>
-									
-								</dt>
-								<dd>The first type</dd>
-							
-								<dt>
-									<b>type2</b>
-									
-								</dt>
-								<dd>The second type</dd>
-							
-								<dt>
-									<b>title</b>
-									
-								</dt>
-								<dd>Name of both containers</dd>
-							
-								<dt>
-									<b>dataTab</b>
-									
-								</dt>
-								<dd>Table which contain the values of the first container</dd>
-							
-								<dt>
-									<b>dataTab2</b>
-									
-								</dt>
-								<dd>Table which contain the values of the second container</dd>
-							
-								<dt>
-									<b>datesTab</b>
-									
-								</dt>
-								<dd>Table which contain the dates of values</dd>
 							
 							</dl>
 						
@@ -1287,46 +1076,19 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="initiateTab"> </a>
+					<a name="initiatePagination"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>initiateTab</b>()
+					<b>initiatePagination</b>()
 					
 					</div>
 					<div class="description">
-						Initiate the table of values for the simple container
+						Initiate the pagination
+How many pages, which element in them...
 						
 							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="initiateTabTwo"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>initiateTabTwo</b>()
-					
-					</div>
-					<div class="description">
-						Initiate the table of values for the double container
-						
-							<br />
-							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_myCharts.js.html">myCharts.js</a>.
+							<i>Defined in: </i> <a href="../symbols/src/_opt_lampp_htdocs_miniProjApp_DB-Vertrou-app1_control_getContainerList.js.html">getContainerList.js</a>.
 						
 						
 					</div>
@@ -1379,6 +1141,13 @@ ul.inheritsList
 						
 						
 						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd>onClick This function is launch by onClick, ie when you click on an element</dd>
+							
+							</dl>
+						
 
 					
 				
@@ -1394,7 +1163,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu May 14 2015 17:53:37 GMT-0500 (CDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri May 15 2015 09:28:17 GMT-0500 (CDT)
 		</div>
 	</body>
 </html>
