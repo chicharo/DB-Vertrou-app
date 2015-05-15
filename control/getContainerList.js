@@ -178,22 +178,7 @@ $(document).ready(function(){
               $('#alert'+items[k][0]).hide();
             }
 
-          /**
-           * attach an event onClick
-           *Launch the pageDetail() function with the id in parameter
-           *
-           *
-           * @see pageDetail The function which is launch in the onClick on the element ie when you click on an element
-           * @method forOnClick
-           * @param {} elem the element
-           * @param {} id the id of the container, param to the function pageDetail
-           */
-          function forOnClick(elem,id){
 
-            elem.onclick=function(){
-            pageDetail(id);
-            }
-          }
 
           displayAll(1);
           initiatePagination();
@@ -205,13 +190,28 @@ $(document).ready(function(){
  
 });
 
+/**
+* attach an event onClick
+*Launch the pageDetail() function with the id in parameter
+*
+*
+* @see pageDetail(id) The function which is launch in the onClick on the element ie when you click on an element
+* @method forOnClick
+* @param {} elem the element
+* @param {} id the id of the container, param to the function pageDetail
+           */
+function forOnClick(elem,id){
 
+  elem.onclick=function(){
+    pageDetail(id);
+  }
+}
 
 /**
  * This function allows the redirection to the details page with the user's id in.
  * @method pageDetail
  * @param {} id the id of the container which is transmetted by the URL
- *@see onClick This function is launch by onClick, ie when you click on an element
+ *@see forOnClick This function is launch by onClick, ie when you click on an element
  */
 function pageDetail(id){
   var ID = ''+id+'&';
