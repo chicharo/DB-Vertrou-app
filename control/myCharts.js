@@ -207,15 +207,9 @@
         }]
     });
     chart = $('#contChart').highcharts();
-    if(isDoubleType == true){
         chart.series[0].setData(dataTab);
         chart.series[1].setData(dataTab2);
-    }
-    else{
-        chart.series[0].setData(dataTab);
-        chart.series[1].setData(null);
-    }
-    //chart.setTitle({ text: 'New title ' + title},{ text: 'New title '});
+
 
 };
 
@@ -262,15 +256,7 @@ function initiateDetails(type, title, dataTab, datesTab) {
         }]
     });
     chart = $('#contChart').highcharts();
-    if(isDoubleType == true){
         chart.series[0].setData(dataTab);
-        chart.series[1].setData(dataTab2);
-    }
-    else{
-        chart.series[0].setData(dataTab);
-        chart.series[1].setData(null);
-    }
-    //chart.setTitle({ text: 'New title ' + title},{ text: 'New title '});
 
 };
 
