@@ -1,87 +1,9 @@
 <?php
-/**
-*@author Olivier Peurichard & Etienne Marois
-*/
-    session_start();
-    /**
-    *Connection to database
-    */
-include('../model/connectionDB.php');
-
-/**
-* Connection to dashboard with two conditions :
-* If the session is open or if the user is identify by his username and password
-*/
-if(isset($_SESSION['id_user']) && $_SESSION['id_user']!=null){
-    $id_owner = $_SESSION['id_user'];
-    include("../model/sqlContainers.php");
-
-    launchDashboard();
-}
-
-else{
-//if there is an username and a password entered in the fields
-if(isset($_POST['username']) AND $_POST['username'] != null AND $_POST['password'] != null AND isset($_POST['password'])){
-//indentfication with password
-    $sql = "SELECT * FROM Users WHERE username = '".htmlspecialchars($_POST['username'])."'";
-    $req = $bdd->query($sql);
-    while ($data = $req->fetch()){
-        $passwd = $data['passwd'];
-    }
-
-//creation of variables we will need : username and id_owner
-    $username = htmlspecialchars($_POST['username']);
-    $sql = "SELECT * FROM Users WHERE username = '".$username."'";
-    $req = $bdd->query($sql);
-    while ($data = $req->fetch()){
-        $id_owner = $data['id'];
-    }
-
-    //Now, the user is identify with combination of corrects username and password
-    if($_POST['password'] == $passwd){
-        
-        $_SESSION['id_user']=$id_owner;
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $passwd;
-
-
-        include("../model/sqlContainers.php");
-        launchDashboard();
-
-    }
-    /**
-    * If the login or password is not correct
-    */
-    else{
-        echo 'Login or password incorrect';?>
-        <head>
-
-        <title>Return to index</title>
-
-        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
-        </head>
-        <?php
-    }
-}
-/**
-*
-*/
-else{
-    echo 'Please, enter your login and password';?>
-        <head>
-
-        <title>Return to index</title>
-
-        <meta http-equiv="refresh" content="3; URL=../FinalApp/index.html">
-        </head>
-        <?php
-}
-}
-
 //---The HTML Page----------------------------------------------------------------------------------------------------
 
-function launchDashboard(){
+//function launchDashboard(){
 
+if(isset($_SESSION['id_user'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -316,6 +238,18 @@ function launchDashboard(){
 </html>
 
         <?php
-}
 //end of HTML page-----------------------------------------------------------------------------------------
+}
+else{
+    echo 'You have to be connected for this page.';
+    ?>
+        <head>
+
+        <title>Return to index</title>
+
+        <meta http-equiv="refresh" content="3; URL=../vue/index.html">
+        </head>
+        <?php
+}
+
 ?>

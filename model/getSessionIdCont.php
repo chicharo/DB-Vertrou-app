@@ -27,5 +27,8 @@ SELECT DISTINCT id FROM Containers, BelongsTo WHERE id_owner ='".$_SESSION['id_u
 	$data = array();
 	$data = $query->fetchAll();
 
-    echo json_encode($data);    
+    echo json_encode($data);
+
+$bdd = null;
+
 ?>

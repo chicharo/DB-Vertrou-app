@@ -34,5 +34,8 @@ $data = array();
 $data = $query->fetchAll();
 
     echo json_encode($data);
+    
+$bdd = null;
+
 
 ?>

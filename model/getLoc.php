@@ -25,4 +25,7 @@ session_start();
 
     echo $json;
 
+$bdd = null;
+
+
 ?>

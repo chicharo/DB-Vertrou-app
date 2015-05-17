@@ -20,5 +20,7 @@ include('connectionDB.php');
     for($i = 0; $data = $req->fetch(); $i++){
         $container_type[$i] = $data['content_type'];
     }
+$bdd = null;
+
 
 ?>

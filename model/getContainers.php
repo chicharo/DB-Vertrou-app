@@ -27,5 +27,8 @@ SELECT `id`,`content_type`,`name`,`max_value`,`alert_value` FROM `Containers` WH
 	$data = array();
     $data = $query->fetchAll();
 
-    echo json_encode($data);     
+    echo json_encode($data);
+
+$bdd = null;
+
 ?>

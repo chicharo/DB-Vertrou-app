@@ -11,9 +11,10 @@ session_start();
 *Delete the session variable
 */
 $_SESSION = array();
- 
 
- 
+setcookie('id', NULL, -1);
+setcookie('login', NULL, -1);
+
 // Détruisez la session 
 /**
 * Delete the session

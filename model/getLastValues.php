@@ -36,5 +36,7 @@ $query = $bdd->query($sql);
 */
 $data = $query->fetchAll();
     echo json_encode($data);
+$bdd = null;
+
 
 ?>

@@ -209,8 +209,6 @@
     chart = $('#contChart').highcharts();
         chart.series[0].setData(dataTab);
         chart.series[1].setData(dataTab2);
-
-
 };
 
 /**
@@ -256,7 +254,7 @@ function initiateDetails(type, title, dataTab, datesTab) {
         }]
     });
     chart = $('#contChart').highcharts();
-        chart.series[0].setData(dataTab);
+    chart.series[0].setData(dataTab);
 
 };
 

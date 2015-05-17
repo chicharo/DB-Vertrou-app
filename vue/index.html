@@ -63,13 +63,15 @@
                     </li>
                     <li class="dropdown" id="menulogin">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
-                        <div class="dropdown-menu" style="padding:17px;">
-                            <form class="form-vertical" role="form"id="formLogin" action="dashboard.php" method="post"> 
+                        <div class="dropdown-menu" id = "connexion" style="padding:17px;">
+
+                            <form class="form-vertical" role="form" id="formLogin" name="formLogin" action="#"> 
                                 <div class="form-group">
-                                <input name="username" id="username" placeholder="Username" type="text"><br> 
+                                    <span id="error"></span>
+                                    <input name="username" id="username" placeholder="Username" type="text"><br> 
                                 </div>
                                 <div class="form-group">
-                                <input name="password" id="password" placeholder="Password" type="password"><br>
+                                    <input name="password" id="password" placeholder="Password" type="password"><br>
                                 </div>
                                 <button id="btnLogin" class="btn" type="submit">Login</button>
                             </form>
@@ -237,9 +239,15 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/jquery.fittext.js"></script>
     <script src="js/wow.min.js"></script>
+    
+    <!-- AJAX -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <!-- Identification -->
+    <script src="../control/identification.js"></script>
 
 </body>
 
