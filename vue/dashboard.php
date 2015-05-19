@@ -115,7 +115,7 @@ if(isset($_SESSION['id_user'])){
             <div id="page-content-wrapper">
                 <div class="col-lg-12">
                     <h1>Tanks List</h1>
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Toggle Menu</a>
                     <div class="container-fluid">
                         <div class="row">
 
