@@ -81,8 +81,13 @@ if(isset($_SESSION['id_user'])){
                         <div class="checkbox">
                             
                         <?php
+                            /**
+                            *Recuperation of types of user's containers
+                            *initialize panel
+                            */
                             $id_owner = $_SESSION['id_user'];
-                            include_once("../model/sqlContainers.php");
+                            include("../model/sqlQueries.php");
+                            $container_type = sqlContainers($id_owner);
                             
                             if(isset($container_type) AND $container_type !=null){
                                 ?>
@@ -172,7 +177,7 @@ if(isset($_SESSION['id_user'])){
 //end of HTML page-----------------------------------------------------------------------------------------
 }
 else{
-    echo 'You have to be connected for this page.';
+    echo 'You have to be connected for display this page.';
     ?>
         <head>
 
