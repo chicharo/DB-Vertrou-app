@@ -24,6 +24,7 @@ if(isset($_SESSION['id_user'])){
         <link href="gridstack.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="dashboard.css" rel="stylesheet">
+        <link href="simple-sidebar.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -65,74 +66,24 @@ if(isset($_SESSION['id_user'])){
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2 sidebar col-xs-2 hidden-xs">
-                    <h2>Dashboard</h2>
-                    <hr></hr>
-                    <div class="panel-group" id="panels1">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse1">Choice by Type</a></h4>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse in">
-                            <?php
-                            /**
-                            *Recuperation of types of user's containers
-                            *initialize panel
-                            */
-                            $id_owner = $_SESSION['id_user'];
-                            include("../model/sqlContainers.php");
-                            if(isset($container_type) AND $container_type !=null){
-                                
-                                for($e = 0; $e<count($container_type); $e++){
-                                    $varContainer = $container_type[$e];
-                                ?><div class="panel-body">
-                                        <a href="#" onClick="displayContainers('<?php echo $varContainer ?>')">
-                                            <?php echo $container_type[$e] ?>
-                                        </a>
-                                    </div>
-                                <?php
-                                }
 
-                            }
-                            else{
-                                echo 'You don\'t have containers';
-                            }
-                            ?>
-                            </div>
 
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse2">Other Option 2</a></h4>
-                            </div>
-                            <div id="collapse2" class="panel-collapse collapse">
-                                <div class="panel-body">                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.                            </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#panels1" href="#collapse3">Other option 3</a></h4>
-                            </div>
-                            <div id="collapse3" class="panel-collapse collapse">
-                                <div class="panel-body">                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.                            </div>
-                            </div>
-                        </div>
-                    </div>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <div class="sidebar-nav">
+                    <h2>Menu</h2>
                     <hr></hr>
-                    <form role="form">
-                        <div class="form-group">
-</div>
-                        <div class="form-group">
-</div>
-                        <div class="form-group">
-                            <label class="control-label" for="exampleInputFile">Pick what you want</label>
-                        </div>
+                    
+                    <hr></hr>
+                    
+                        <label class="control-label" for="exampleInputFile">Pick what you want</label>
+                        
                         <div class="checkbox">
                             
                         <?php
-                            include("../model/sqlContainers.php");
+                            $id_owner = $_SESSION['id_user'];
+                            include_once("../model/sqlContainers.php");
+                            
                             if(isset($container_type) AND $container_type !=null){
                                 ?>
                                 <label class="control-label">
@@ -158,47 +109,23 @@ if(isset($_SESSION['id_user'])){
                             ?>
                             
                         </div>
-                    </form>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                    <div class="btn-group">
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="#">Action</a>
-                            </li>
-                            <li>
-                                <a href="#">Another action</a>
-                            </li>
-                            <li>
-                                <a href="#">Something else here</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">Separated link</a>
-                            </li>
-                        </ul>
+                   
+                </div>
+             </div>
+            <div id="page-content-wrapper">
+                <div class="col-lg-12">
+                    <h1>Tanks List</h1>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="grid-stack" data-gs-width="4"></div>
+                            <ul class="pagination" id="pagination"></ul>
+                        </div> 
                     </div>
                 </div>
-                <div class="main col-sm-offset-2 col-xs-10 col-sm-10">
-                    <div class="container-fluid">
-                            <div class="row">
-
-                        <div class="grid-stack" data-gs-width="4">
-
-
             </div>
-            <ul class="pagination" id="pagination"></ul>
-            </div> 
-    </div>
-</div>
-                        
-                            
-                                
-
-
-
-
-                        
-                   
+               
                     
     </div>
 </div>
@@ -228,7 +155,12 @@ if(isset($_SESSION['id_user'])){
 <script src="../control/initiateGrid.js"></script>
 <script src ="../control/getContainerList.js"></script>
 
-
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 
 
